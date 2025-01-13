@@ -1,5 +1,6 @@
 import icons from "@/constants/icons";
 import images from "@/constants/images";
+import { login } from "@/lib/appwrite";
 import React from "react";
 import {
 	StyleSheet,
@@ -9,10 +10,18 @@ import {
 	ScrollView,
 	Image,
 	TouchableOpacity,
+	Alert,
 } from "react-native";
 
 const SignIn = () => {
-	const handleLogin = () => {};
+	const handleLogin = async () => {
+		const result = await login();
+		if (result) {
+			console.log("login succes");
+		} else {
+			Alert.alert("Error", "Failed to login");
+		}
+	};
 	return (
 		<SafeAreaView className="bg-gray-50 h-full">
 			<ScrollView contentContainerClassName="h-full">
